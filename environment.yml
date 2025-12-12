@@ -1,0 +1,14 @@
+name: quantum-credit-score
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy>=1.21.0
+  - scikit-learn>=1.0.0
+  - pip
+  - pip:
+    - qiskit>=0.45.0
+    - qiskit-machine-learning>=0.7.0
+    - qiskit-aer>=0.12.0
+
