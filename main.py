@@ -174,9 +174,10 @@ class QuantumCreditScorePredictor:
         """
         if isinstance(features, dict):
             # Convert dictionary to array
+            # Keep preprocessing consistent with training data (income in thousands)
             feature_array = np.array([[
                 features.get('age', 0),
-                features.get('income', 0),
+                features.get('income', 0) / 1000.0,
                 features.get('debt_to_income', 0),
                 features.get('payment_history', 0),
                 features.get('credit_history_length', 0),
@@ -298,14 +299,14 @@ def main():
         {
             'name': 'Alice',
             'features': {
-                'age': 35,
-                'income': 75000,
-                'debt_to_income': 0.25,
-                'payment_history': 0.95,
-                'credit_history_length': 12,
+                'age': 70,
+                'income': 7500000,
+                'debt_to_income': 0.10,
+                'payment_history': 0.99,
+                'credit_history_length': 50,
                 'num_accounts': 5,
-                'credit_utilization': 0.30,
-                'num_inquiries': 2
+                'credit_utilization': 0.1,
+                'num_inquiries': 0
             }
         },
         {
@@ -313,7 +314,7 @@ def main():
             'features': {
                 'age': 28,
                 'income': 45000,
-                'debt_to_income': 0.45,
+                'debt_to_income': 1,
                 'payment_history': 0.75,
                 'credit_history_length': 5,
                 'num_accounts': 3,
@@ -324,14 +325,14 @@ def main():
         {
             'name': 'Charlie',
             'features': {
-                'age': 50,
-                'income': 120000,
-                'debt_to_income': 0.15,
+                'age': 20,
+                'income': 1000,
+                'debt_to_income': 0.90,
                 'payment_history': 0.98,
-                'credit_history_length': 25,
-                'num_accounts': 8,
-                'credit_utilization': 0.20,
-                'num_inquiries': 1
+                'credit_history_length': 1,
+                'num_accounts': 1,
+                'credit_utilization': 0.90,
+                'num_inquiries': 19
             }
         }
     ]
